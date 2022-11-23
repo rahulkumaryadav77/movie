@@ -20,17 +20,6 @@ setup the environment variables (listed below)
 
 ```
 
-## Environment variables
-
-Create a local ".env" file with the following key values
-
-```
-
-REACT_APP_API_KEY = [Your api key]
-REACT_APP_URI = https://api.themoviedb.org/3/
-REACT_APP_IMAGE_URI = https://image.tmdb.org/t/p/w500
-
-```
 
 #### Finally
 
@@ -38,18 +27,8 @@ REACT_APP_IMAGE_URI = https://image.tmdb.org/t/p/w500
 
 ### Now you are good to go!!!
 
-## Technologies Used
-
-All the technologies that are used here are :
-
--  ReactJS - UI Library
--  Redux - State management library
--  SCSS - CSS Preprocessor
--  Redux Thunk - Async action creaters
--  React Router - Routing purpose
-
 ### Contributions
 
 Feel free to contribute . Open an issue if you found one or give a Pull request
 
-##### Made By : [Pratyush Ranjan](pratyushranjan.in)
+##### Made By : [Rahul Kumar Yadav]
