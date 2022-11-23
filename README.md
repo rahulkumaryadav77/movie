@@ -14,9 +14,8 @@ As this project is made with tmdb api, you have to have an api key which you can
 
 ```
 $ git clone ["git id"]
-$ cd moviescout
+$ cd movie
 $ npm install
-setup the environment variables (listed below)
 
 ```
 
