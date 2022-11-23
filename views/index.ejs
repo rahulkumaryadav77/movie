@@ -1,0 +1,76 @@
+<%- include('partials/header.ejs') %> 
+
+<div class="container my-5">
+    <h1>Welcome !</h1>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create Playlist
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Create Playlist</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/myPlaylist" method="POST">
+                    <div class="mb-3">
+                      <label for="playlist" class="form-label">Name</label>
+                      <input type="text" name="playlistName" class="form-control" id="playlist">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="public" class="form-label">Public Playlist?</label>
+                        <select class="form-select" name="isPublic" aria-label="Default select example">
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                      </div>
+                    <button type="submit" class="btn btn-info">Save</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <hr>
+    <h2 class="my-5">All Playlists</h2>
+    <div class="row">
+        <% if(playlists.length > 0) { %>
+            <% for(let playlist of playlists) { %>
+                <% if(playlist.isPublic) { %>
+                    <div class="col-lg-3 col-md-4 my-3">
+                        <div class="card">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/At-the-movies.jpg/250px-At-the-movies.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title"><%= playlist.playlistName %><span><i class="text-muted">(by <%=playlist.author.username%>)</i></span></h5>
+                              <h6 class="text-muted"><%= playlist.movies.length %> Movies</h6>
+                              <p class="card-text"><%= playlist.description %></p>
+                              <a href="/myPlaylist/<%= playlist._id %>" class="btn btn-primary">View Playlist</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        <% } else { %>
+            <p class="text-muted">No playlist...please create one!</p>
+            <div class="card" style="width: 18rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/At-the-movies.jpg/250px-At-the-movies.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Lorem Ipsum</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">View Playlist</a>
+                </div>
+            </div>
+        <% } %>     
+    </div>
+</div>
+
+<%- include('partials/footer.ejs') %> 

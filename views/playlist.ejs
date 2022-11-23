@@ -1,0 +1,67 @@
+<%- include('partials/header.ejs') %> 
+
+<div class="container my-5">
+    <form class="d-flex my-4" method="GET">
+        <input class="form-control me-2" name="movie" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+        <% if(movie) { %>
+            <div class="container my-5">
+                <div class="card mb-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img src="<%=movie.Poster%>" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-9">
+                        <div class="card-body">
+                            <h2 class="card-title"><%=movie.Title%><span class="text-muted">(<%=movie.Year%>)</span></h2>
+                            <h5><i class="text-muted">Genre: <%=movie.Genre%></i></h5>
+                            <p class="card-text"><%=movie.Plot%></p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Meta Score: <%=movie.Metascore%></li>
+                                <li class="list-group-item">IMDB Rating: <%=movie.imdbRating%></li>
+                                <li class="list-group-item">IMDB Votes: <%=movie.imdbVotes%></li>
+                                <li class="list-group-item">BoxOffice Collection: <%=movie.BoxOffice%></li>
+                                <li class="list-group-item">Awards: <%=movie.Awards%></li>
+                                <li class="list-group-item d-flex">
+                                    <form action="/myPlaylist/<%=playlist._id%>/addmovie" method="POST">
+                                      <input type="hidden" name="movie" value="<%=JSON.stringify(movie)%>">
+                                      <button class="btn btn-success">Add Movie to current Playlist</button>
+                                    </form>
+                                    <h1></h1>
+                                    <a href="/myPlaylist/<%=playlist._id%>" class="btn btn-warning">Cancel</a>
+                                </li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        <% } else { %>
+            <% //if(currentUser.id === playlist.author.id) { %>
+                <h1><%= playlist.playlistName %></h1>
+                <% if(playlist.movies.length < 1) { %>
+                    <p class="text-muted">Add your favourite movies to this playlist by simply searching.</p>
+                <% } else { %>
+                    <div class="row">
+                        <% playlist.movies.forEach(movie => { %>
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="<%= movie.Poster %>" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%=movie.Title%></h5>
+                                      <h5><i class="text-muted">Genre: <%=movie.Genre%></i></h5>
+                                      <p class="card-text"><%=movie.Plot%></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+            <% } %>
+        <% //} %>
+
+</div>
+
+<%- include('partials/footer.ejs') %> 
