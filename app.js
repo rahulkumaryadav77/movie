@@ -7,7 +7,7 @@ const passport = require('passport');
 const localStrategy = require('passport-local');
 const User = require('./models/user');
 
-const dbUrl = 'mongodb://localhost:27017/movie';
+const dbUrl = 'mongodb+srv://colt:NgvxXZpDQb43j6TE@cluster07.asvav.mongodb.net/?retryWrites=true&w=majority' || 'mongodb://localhost:27017/movie';
 const PORT = 3000;
 
 const loginRouter = require('./routes/login');
