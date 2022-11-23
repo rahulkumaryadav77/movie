@@ -2,6 +2,8 @@
 
 ### [Check out the app here live](https://mirage-juvenile-morning.glitch.me/)
 
+### [Check out code for the app](https://github.com/rahulkumaryadav77/movie)
+
 ## About
 
 A movie database app built with node.js and express.js using omdb api.
